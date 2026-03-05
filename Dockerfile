@@ -20,18 +20,18 @@ ADD https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.3.0/mysql-conne
     /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 # Copiar web.xml
-COPY TiagoPires/paginas/WEB-INF/web.xml /usr/local/tomcat/webapps/ROOT/WEB-INF/
+COPY paginas/WEB-INF/web.xml /usr/local/tomcat/webapps/ROOT/WEB-INF/
 
 # Copiar basedados.h
-COPY TiagoPires/basedados/basedados.h /usr/local/tomcat/webapps/ROOT/
+COPY basedados/basedados.h /usr/local/tomcat/webapps/ROOT/
 
 # Copiar paginas JSP, CSS, JS
-COPY TiagoPires/paginas/*.jsp /usr/local/tomcat/webapps/ROOT/
-COPY TiagoPires/paginas/*.css /usr/local/tomcat/webapps/ROOT/
-COPY TiagoPires/paginas/*.js  /usr/local/tomcat/webapps/ROOT/
+COPY paginas/*.jsp /usr/local/tomcat/webapps/ROOT/
+COPY paginas/*.css /usr/local/tomcat/webapps/ROOT/
+COPY paginas/*.js  /usr/local/tomcat/webapps/ROOT/
 
 # Copiar script de inicializacao da BD
-COPY TiagoPires/basedados/criar_bd.sql /docker-entrypoint-initdb.d/
+COPY basedados/criar_bd.sql /docker-entrypoint-initdb.d/
 
 # Railway usa a variavel PORT
 ENV PORT=8080
