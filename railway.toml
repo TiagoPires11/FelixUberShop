@@ -1,0 +1,12 @@
+# =========================================================================
+#  railway.toml - Configuracao Railway
+#  Autor: Tiago Pires
+# =========================================================================
+
+[build]
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
