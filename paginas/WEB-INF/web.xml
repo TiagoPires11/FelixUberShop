@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =====================================================================
+  web.xml - Deployment Descriptor para FelixUberShop
+  Autor: Tiago Pires
+  Data: 2025/2026
+  Descricao: Configuracao de deploy do Apache Tomcat. Define a pagina
+             inicial (welcome-file), codificacao UTF-8, timeout de sessao
+             e mapeamento de erros.
+====================================================================== -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>FelixUberShop - Mercearia Online</display-name>
+    <description>Aplicação de gestão de encomendas para a mercearia FelixUberShop</description>
+
+    <!-- Pagina inicial -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Timeout de sessao (30 minutos) -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Filtro de codificacao UTF-8 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ignore</param-name>
+            <param-value>false</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Paginas de erro -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erro.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/erro.jsp</location>
+    </error-page>
+
+</web-app>

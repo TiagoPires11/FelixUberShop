@@ -1,0 +1,683 @@
+/* ============================================================================
+   FelixUberShop - Folha de Estilos Principal
+   Autor: Tiago Pires
+   Data: 2025/2026
+   Descricao: Estilos CSS para toda a aplicacao. Layout responsivo com
+              design limpo e moderno para uma mercearia online.
+   ============================================================================ */
+
+/* --------------------------------------------------------------------------
+   Reset e Base
+   Normalizacao de estilos base do browser para consistencia cross-browser
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #1b5e20;
+}
+
+/* --------------------------------------------------------------------------
+   Navbar - Barra de navegacao superior
+   Barra fixa no topo com logo, links de navegacao e info do utilizador
+   -------------------------------------------------------------------------- */
+.navbar {
+    background-color: #2e7d32;
+    color: white;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand:hover {
+    color: #c8e6c9;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-nav li a {
+    color: white;
+    padding: 15px 12px;
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.navbar-nav li a:hover {
+    background-color: #1b5e20;
+    text-decoration: none;
+}
+
+.navbar-nav li a.active {
+    background-color: #1b5e20;
+    font-weight: bold;
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #c8e6c9;
+    font-size: 0.9em;
+}
+
+.navbar-user .btn-logout {
+    background-color: #c62828;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    transition: background-color 0.3s;
+}
+
+.navbar-user .btn-logout:hover {
+    background-color: #b71c1c;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Container Principal
+   Wrapper central que limita a largura do conteudo
+   -------------------------------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Cards - Caixas de conteudo reutilizaveis
+   Utilizados para formularios, listagens e blocos informativos
+   -------------------------------------------------------------------------- */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    border-bottom: 2px solid #e8f5e9;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    color: #2e7d32;
+    font-size: 1.4em;
+}
+
+.card-header h3 {
+    color: #2e7d32;
+    font-size: 1.2em;
+}
+
+/* --------------------------------------------------------------------------
+   Titulos da pagina
+   -------------------------------------------------------------------------- */
+.page-title {
+    color: #2e7d32;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #2e7d32;
+}
+
+.page-subtitle {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Grelhas - Sistema de grid para layouts de colunas
+   -------------------------------------------------------------------------- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Formularios - Estilos para inputs, selects, textareas e botoes
+   -------------------------------------------------------------------------- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-inline {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.form-inline .form-group {
+    flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Botoes - Estilos para botoes de acao
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #757575;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #616161;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #c62828;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #f57f17;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e65100;
+    color: white;
+}
+
+.btn-info {
+    background-color: #0277bd;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #01579b;
+    color: white;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85em;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 1.1em;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Tabelas - Estilos para tabelas de dados
+   -------------------------------------------------------------------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table th {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+table .acoes {
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Alertas / Mensagens - Feedback ao utilizador
+   -------------------------------------------------------------------------- */
+.alert {
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+    font-size: 0.95em;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-color: #c62828;
+}
+
+.alert-warning {
+    background-color: #fff3e0;
+    color: #e65100;
+    border-color: #e65100;
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    color: #0277bd;
+    border-color: #0277bd;
+}
+
+/* --------------------------------------------------------------------------
+   Badges / Etiquetas - Para estados e categorias
+   -------------------------------------------------------------------------- */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.badge-pendente { background-color: #fff3e0; color: #e65100; }
+.badge-confirmada { background-color: #e3f2fd; color: #0277bd; }
+.badge-em_preparacao { background-color: #f3e5f5; color: #7b1fa2; }
+.badge-pronta { background-color: #e8f5e9; color: #2e7d32; }
+.badge-entregue { background-color: #e0f2f1; color: #00695c; }
+.badge-cancelada { background-color: #ffebee; color: #c62828; }
+.badge-ativo { background-color: #e8f5e9; color: #2e7d32; }
+.badge-inativo { background-color: #ffebee; color: #c62828; }
+
+/* --------------------------------------------------------------------------
+   Saldo / Carteira - Destaque para valores monetarios
+   -------------------------------------------------------------------------- */
+.saldo-display {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #2e7d32;
+    text-align: center;
+    padding: 20px;
+}
+
+.saldo-display.negativo {
+    color: #c62828;
+}
+
+/* --------------------------------------------------------------------------
+   Promocoes - Cards de promocoes na homepage
+   -------------------------------------------------------------------------- */
+.promo-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-left: 5px solid #2e7d32;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.promo-card h3 {
+    color: #1b5e20;
+    margin-bottom: 8px;
+}
+
+.promo-card p {
+    color: #333;
+}
+
+.promo-card .promo-data {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Info Mercearia - Blocos de informacao na homepage
+   -------------------------------------------------------------------------- */
+.info-block {
+    padding: 20px;
+    text-align: center;
+}
+
+.info-block h3 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.info-block p {
+    color: #555;
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section - Secao de destaque na homepage
+   -------------------------------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard - Paineis de controlo com estatisticas
+   -------------------------------------------------------------------------- */
+.dashboard-stat {
+    text-align: center;
+    padding: 25px;
+}
+
+.dashboard-stat .stat-value {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.dashboard-stat .stat-label {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* --------------------------------------------------------------------------
+   Produtos - Grid de produtos para catalogo
+   -------------------------------------------------------------------------- */
+.produto-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.produto-card .produto-img {
+    background-color: #e8f5e9;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+}
+
+.produto-card .produto-info {
+    padding: 15px;
+}
+
+.produto-card .produto-nome {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.produto-card .produto-categoria {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.produto-card .produto-preco {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.produto-card .produto-stock {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* --------------------------------------------------------------------------
+   Paginacao - Off para versao simples, mas preparado
+   -------------------------------------------------------------------------- */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.paginacao a, .paginacao span {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+}
+
+.paginacao a:hover {
+    background-color: #e8f5e9;
+    text-decoration: none;
+}
+
+.paginacao .atual {
+    background-color: #2e7d32;
+    color: white;
+    border-color: #2e7d32;
+}
+
+/* --------------------------------------------------------------------------
+   Footer - Rodape da pagina
+   -------------------------------------------------------------------------- */
+.footer {
+    background-color: #333;
+    color: #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: #81c784;
+}
+
+/* --------------------------------------------------------------------------
+   Login / Registo - Formularios centrados
+   -------------------------------------------------------------------------- */
+.form-login {
+    max-width: 420px;
+    margin: 40px auto;
+}
+
+/* --------------------------------------------------------------------------
+   Utilidades - Classes auxiliares reutilizaveis
+   -------------------------------------------------------------------------- */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-muted { color: #888; }
+.text-success { color: #2e7d32; }
+.text-danger { color: #c62828; }
+.text-warning { color: #e65100; }
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.p-20 { padding: 20px; }
+
+/* --------------------------------------------------------------------------
+   Responsividade - Adaptar layout para ecras mais pequenos
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .form-inline {
+        flex-direction: column;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    table th, table td {
+        padding: 8px 10px;
+    }
+}
