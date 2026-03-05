@@ -36,11 +36,8 @@ COPY basedados/criar_bd.sql /docker-entrypoint-initdb.d/
 # Railway usa a variavel PORT
 ENV PORT=8080
 
-# Configurar Tomcat para usar a porta do Railway
-RUN sed -i 's/port="8080"/port="${PORT}"/' /usr/local/tomcat/conf/server.xml
-
 # Expor porta
 EXPOSE ${PORT}
 
-# Iniciar Tomcat
-CMD ["catalina.sh", "run"]
+# Substituir a porta no arranque e iniciar Tomcat
+CMD sed -i "s/port=\"8080\"/port=\"${PORT}\"/" /usr/local/tomcat/conf/server.xml && catalina.sh run
