@@ -7,8 +7,53 @@
    ============================================================================ */
 
 /* --------------------------------------------------------------------------
+   Variaveis CSS - Paleta de cores e espacamentos
+   -------------------------------------------------------------------------- */
+:root {
+    /* Cores principais */
+    --primary: #3d6b4f;
+    --primary-dark: #2c4f3a;
+    --primary-light: #5a8f6e;
+    --primary-subtle: #eef4f0;
+
+    /* Neutros quentes (brancos "sujos") */
+    --bg: #f8f7f4;
+    --bg-warm: #f3f1ec;
+    --surface: #ffffff;
+    --surface-warm: #faf9f6;
+    --border: #e8e5df;
+    --border-light: #f0ede8;
+
+    /* Texto */
+    --text: #2d2d2d;
+    --text-secondary: #6b6b6b;
+    --text-muted: #9a9a9a;
+
+    /* Acentos */
+    --accent-red: #c0392b;
+    --accent-red-light: #fdf2f0;
+    --accent-orange: #d4790e;
+    --accent-orange-light: #fef8f0;
+    --accent-blue: #2980b9;
+    --accent-blue-light: #f0f7fc;
+    --accent-purple: #7c3aed;
+    --accent-purple-light: #f5f0ff;
+    --accent-teal: #0d9488;
+    --accent-teal-light: #f0fdf9;
+
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+
+    /* Espacamentos */
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 14px;
+}
+
+/* --------------------------------------------------------------------------
    Reset e Base
-   Normalizacao de estilos base do browser para consistencia cross-browser
    -------------------------------------------------------------------------- */
 * {
     margin: 0;
@@ -17,37 +62,42 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-    color: #2e7d32;
+    color: var(--primary);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 a:hover {
-    text-decoration: underline;
-    color: #1b5e20;
+    color: var(--primary-dark);
+    text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
-   Navbar - Barra de navegacao superior
-   Barra fixa no topo com logo, links de navegacao e info do utilizador
+   Navbar
    -------------------------------------------------------------------------- */
 .navbar {
-    background-color: #2e7d32;
-    color: white;
+    background-color: var(--surface);
+    color: var(--text);
     padding: 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255,255,255,0.92);
 }
 
 .navbar-container {
@@ -56,22 +106,23 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .navbar-brand {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--primary);
     text-decoration: none;
-    padding: 15px 0;
+    padding: 16px 0;
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: -0.02em;
 }
 
 .navbar-brand:hover {
-    color: #c8e6c9;
+    color: var(--primary-dark);
     text-decoration: none;
 }
 
@@ -79,108 +130,123 @@ a:hover {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 5px;
+    gap: 2px;
 }
 
 .navbar-nav li a {
-    color: white;
-    padding: 15px 12px;
+    color: var(--text-secondary);
+    padding: 10px 14px;
     display: block;
-    transition: background-color 0.3s;
-    border-radius: 4px;
-    font-size: 0.95em;
+    transition: all 0.2s;
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .navbar-nav li a:hover {
-    background-color: #1b5e20;
+    background-color: var(--primary-subtle);
+    color: var(--primary);
     text-decoration: none;
 }
 
 .navbar-nav li a.active {
-    background-color: #1b5e20;
-    font-weight: bold;
+    background-color: var(--primary-subtle);
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .navbar-user {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #c8e6c9;
-    font-size: 0.9em;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.88em;
 }
 
 .navbar-user .btn-logout {
-    background-color: #c62828;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 4px;
+    background-color: transparent;
+    color: var(--accent-red);
+    padding: 7px 16px;
+    border-radius: var(--radius-sm);
     font-size: 0.85em;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid var(--accent-red);
 }
 
 .navbar-user .btn-logout:hover {
-    background-color: #b71c1c;
+    background-color: var(--accent-red);
+    color: white;
     text-decoration: none;
 }
 
 /* --------------------------------------------------------------------------
    Container Principal
-   Wrapper central que limita a largura do conteudo
    -------------------------------------------------------------------------- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 28px 24px;
     flex: 1;
 }
 
 /* --------------------------------------------------------------------------
-   Cards - Caixas de conteudo reutilizaveis
-   Utilizados para formularios, listagens e blocos informativos
+   Cards
    -------------------------------------------------------------------------- */
 .card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 25px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 28px;
     margin-bottom: 20px;
+    border: 1px solid var(--border-light);
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .card-header {
-    border-bottom: 2px solid #e8f5e9;
-    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
     margin-bottom: 20px;
 }
 
 .card-header h2 {
-    color: #2e7d32;
-    font-size: 1.4em;
+    color: var(--text);
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .card-header h3 {
-    color: #2e7d32;
-    font-size: 1.2em;
+    color: var(--text);
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 /* --------------------------------------------------------------------------
    Titulos da pagina
    -------------------------------------------------------------------------- */
 .page-title {
-    color: #2e7d32;
-    font-size: 1.8em;
+    color: var(--text);
+    font-size: 1.7em;
     margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid #2e7d32;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .page-subtitle {
-    color: #555;
-    font-size: 1.1em;
+    color: var(--text-secondary);
+    font-size: 1.05em;
     margin-bottom: 20px;
 }
 
 /* --------------------------------------------------------------------------
-   Grelhas - Sistema de grid para layouts de colunas
+   Grelhas
    -------------------------------------------------------------------------- */
 .grid-2 {
     display: grid;
@@ -201,37 +267,41 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Formularios - Estilos para inputs, selects, textareas e botoes
+   Formularios
    -------------------------------------------------------------------------- */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 6px;
-    font-weight: 600;
-    color: #444;
-    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.9em;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    transition: border-color 0.3s;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95em;
+    transition: all 0.2s;
+    background-color: var(--surface-warm);
+    color: var(--text);
+    font-family: inherit;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #2e7d32;
-    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(61, 107, 79, 0.1);
+    background-color: var(--surface);
 }
 
 .form-group textarea {
@@ -241,7 +311,7 @@ a:hover {
 
 .form-inline {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: flex-end;
 }
 
@@ -250,83 +320,92 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Botoes - Estilos para botoes de acao
+   Botoes
    -------------------------------------------------------------------------- */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border: none;
-    border-radius: 4px;
-    font-size: 1em;
+    border-radius: var(--radius-sm);
+    font-size: 0.92em;
+    font-weight: 500;
     cursor: pointer;
     text-align: center;
-    transition: all 0.3s;
+    transition: all 0.2s;
     text-decoration: none;
+    font-family: inherit;
+    letter-spacing: -0.01em;
 }
 
 .btn:hover {
     text-decoration: none;
-    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 .btn-primary {
-    background-color: #2e7d32;
+    background-color: var(--primary);
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #1b5e20;
+    background-color: var(--primary-dark);
     color: white;
 }
 
 .btn-secondary {
-    background-color: #757575;
-    color: white;
+    background-color: var(--bg-warm);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
-    background-color: #616161;
-    color: white;
+    background-color: var(--border);
+    color: var(--text);
 }
 
 .btn-danger {
-    background-color: #c62828;
+    background-color: var(--accent-red);
     color: white;
 }
 
 .btn-danger:hover {
-    background-color: #b71c1c;
+    background-color: #a93226;
     color: white;
 }
 
 .btn-warning {
-    background-color: #f57f17;
+    background-color: var(--accent-orange);
     color: white;
 }
 
 .btn-warning:hover {
-    background-color: #e65100;
+    background-color: #b8690c;
     color: white;
 }
 
 .btn-info {
-    background-color: #0277bd;
+    background-color: var(--accent-blue);
     color: white;
 }
 
 .btn-info:hover {
-    background-color: #01579b;
+    background-color: #216b9c;
     color: white;
 }
 
 .btn-sm {
-    padding: 6px 12px;
-    font-size: 0.85em;
+    padding: 6px 14px;
+    font-size: 0.82em;
 }
 
 .btn-lg {
-    padding: 14px 28px;
-    font-size: 1.1em;
+    padding: 14px 30px;
+    font-size: 1.05em;
 }
 
 .btn-block {
@@ -341,7 +420,7 @@ a:hover {
 }
 
 /* --------------------------------------------------------------------------
-   Tabelas - Estilos para tabelas de dados
+   Tabelas
    -------------------------------------------------------------------------- */
 table {
     width: 100%;
@@ -351,21 +430,22 @@ table {
 
 table th,
 table td {
-    padding: 12px 15px;
+    padding: 13px 16px;
     text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-light);
 }
 
 table th {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: var(--bg-warm);
+    color: var(--text-secondary);
     font-weight: 600;
-    font-size: 0.9em;
+    font-size: 0.82em;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 table tr:hover {
-    background-color: #f5f5f5;
+    background-color: var(--surface-warm);
 }
 
 table .acoes {
@@ -373,180 +453,199 @@ table .acoes {
 }
 
 /* --------------------------------------------------------------------------
-   Alertas / Mensagens - Feedback ao utilizador
+   Alertas / Mensagens
    -------------------------------------------------------------------------- */
 .alert {
     padding: 14px 18px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     margin-bottom: 20px;
-    border-left: 4px solid;
-    font-size: 0.95em;
+    border-left: 3px solid;
+    font-size: 0.93em;
 }
 
 .alert-success {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border-color: #2e7d32;
+    background-color: #f0f9f2;
+    color: var(--primary-dark);
+    border-color: var(--primary);
 }
 
 .alert-error {
-    background-color: #ffebee;
-    color: #c62828;
-    border-color: #c62828;
+    background-color: var(--accent-red-light);
+    color: var(--accent-red);
+    border-color: var(--accent-red);
 }
 
 .alert-warning {
-    background-color: #fff3e0;
-    color: #e65100;
-    border-color: #e65100;
+    background-color: var(--accent-orange-light);
+    color: var(--accent-orange);
+    border-color: var(--accent-orange);
 }
 
 .alert-info {
-    background-color: #e3f2fd;
-    color: #0277bd;
-    border-color: #0277bd;
+    background-color: var(--accent-blue-light);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
 }
 
 /* --------------------------------------------------------------------------
-   Badges / Etiquetas - Para estados e categorias
+   Badges / Etiquetas
    -------------------------------------------------------------------------- */
 .badge {
     display: inline-block;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.8em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78em;
     font-weight: 600;
+    letter-spacing: 0.01em;
 }
 
-.badge-pendente { background-color: #fff3e0; color: #e65100; }
-.badge-confirmada { background-color: #e3f2fd; color: #0277bd; }
-.badge-em_preparacao { background-color: #f3e5f5; color: #7b1fa2; }
-.badge-pronta { background-color: #e8f5e9; color: #2e7d32; }
-.badge-entregue { background-color: #e0f2f1; color: #00695c; }
-.badge-cancelada { background-color: #ffebee; color: #c62828; }
-.badge-ativo { background-color: #e8f5e9; color: #2e7d32; }
-.badge-inativo { background-color: #ffebee; color: #c62828; }
+.badge-pendente { background-color: var(--accent-orange-light); color: var(--accent-orange); }
+.badge-confirmada { background-color: var(--accent-blue-light); color: var(--accent-blue); }
+.badge-em_preparacao { background-color: var(--accent-purple-light); color: var(--accent-purple); }
+.badge-pronta { background-color: #f0f9f2; color: var(--primary); }
+.badge-entregue { background-color: var(--accent-teal-light); color: var(--accent-teal); }
+.badge-cancelada { background-color: var(--accent-red-light); color: var(--accent-red); }
+.badge-ativo { background-color: #f0f9f2; color: var(--primary); }
+.badge-inativo { background-color: var(--accent-red-light); color: var(--accent-red); }
 
 /* --------------------------------------------------------------------------
-   Saldo / Carteira - Destaque para valores monetarios
+   Saldo / Carteira
    -------------------------------------------------------------------------- */
 .saldo-display {
     font-size: 2.5em;
-    font-weight: bold;
-    color: #2e7d32;
+    font-weight: 700;
+    color: var(--primary);
     text-align: center;
     padding: 20px;
+    letter-spacing: -0.03em;
 }
 
 .saldo-display.negativo {
-    color: #c62828;
+    color: var(--accent-red);
 }
 
 /* --------------------------------------------------------------------------
-   Promocoes - Cards de promocoes na homepage
+   Promocoes
    -------------------------------------------------------------------------- */
 .promo-card {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-    border-left: 5px solid #2e7d32;
-    padding: 20px;
-    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary);
+    padding: 22px;
+    border-radius: var(--radius);
     margin-bottom: 15px;
+    transition: box-shadow 0.2s;
+}
+
+.promo-card:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .promo-card h3 {
-    color: #1b5e20;
+    color: var(--text);
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .promo-card p {
-    color: #333;
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 .promo-card .promo-data {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 8px;
+    font-size: 0.82em;
+    color: var(--text-muted);
+    margin-top: 10px;
 }
 
 /* --------------------------------------------------------------------------
-   Info Mercearia - Blocos de informacao na homepage
+   Info Mercearia
    -------------------------------------------------------------------------- */
 .info-block {
-    padding: 20px;
+    padding: 24px;
     text-align: center;
 }
 
 .info-block h3 {
-    color: #2e7d32;
+    color: var(--text);
     margin-bottom: 10px;
-    font-size: 1.1em;
+    font-size: 1.05em;
+    font-weight: 600;
 }
 
 .info-block p {
-    color: #555;
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
-   Hero Section - Secao de destaque na homepage
+   Hero Section
    -------------------------------------------------------------------------- */
 .hero {
-    background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: white;
-    padding: 50px 20px;
+    padding: 56px 24px;
     text-align: center;
-    border-radius: 8px;
-    margin-bottom: 30px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-md);
 }
 
 .hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 2.4em;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 .hero p {
-    font-size: 1.2em;
+    font-size: 1.15em;
     opacity: 0.9;
+    font-weight: 400;
 }
 
 /* --------------------------------------------------------------------------
-   Dashboard - Paineis de controlo com estatisticas
+   Dashboard
    -------------------------------------------------------------------------- */
 .dashboard-stat {
     text-align: center;
-    padding: 25px;
+    padding: 28px;
 }
 
 .dashboard-stat .stat-value {
     font-size: 2.2em;
-    font-weight: bold;
-    color: #2e7d32;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.03em;
 }
 
 .dashboard-stat .stat-label {
-    font-size: 0.9em;
-    color: #777;
-    margin-top: 5px;
+    font-size: 0.88em;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-weight: 500;
 }
 
 /* --------------------------------------------------------------------------
-   Produtos - Grid de produtos para catalogo
+   Produtos
    -------------------------------------------------------------------------- */
 .produto-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.25s;
 }
 
 .produto-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .produto-card .produto-img {
-    background-color: #e8f5e9;
-    height: 150px;
+    background-color: var(--bg-warm);
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -554,93 +653,103 @@ table .acoes {
 }
 
 .produto-card .produto-info {
-    padding: 15px;
+    padding: 18px;
 }
 
 .produto-card .produto-nome {
     font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
+    color: var(--text);
+    margin-bottom: 4px;
+    font-size: 0.95em;
 }
 
 .produto-card .produto-categoria {
-    font-size: 0.8em;
-    color: #888;
-    margin-bottom: 8px;
+    font-size: 0.78em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 500;
 }
 
 .produto-card .produto-preco {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #2e7d32;
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .produto-card .produto-stock {
-    font-size: 0.85em;
-    color: #666;
+    font-size: 0.82em;
+    color: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
-   Paginacao - Off para versao simples, mas preparado
+   Paginacao
    -------------------------------------------------------------------------- */
 .paginacao {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
     margin-top: 20px;
 }
 
 .paginacao a, .paginacao span {
     padding: 8px 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: #333;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    transition: all 0.2s;
 }
 
 .paginacao a:hover {
-    background-color: #e8f5e9;
+    background-color: var(--primary-subtle);
+    border-color: var(--primary);
+    color: var(--primary);
     text-decoration: none;
 }
 
 .paginacao .atual {
-    background-color: #2e7d32;
+    background-color: var(--primary);
     color: white;
-    border-color: #2e7d32;
+    border-color: var(--primary);
 }
 
 /* --------------------------------------------------------------------------
-   Footer - Rodape da pagina
+   Footer
    -------------------------------------------------------------------------- */
 .footer {
-    background-color: #333;
-    color: #ccc;
-    padding: 20px;
+    background-color: var(--surface);
+    color: var(--text-muted);
+    padding: 24px;
     text-align: center;
     margin-top: auto;
-    font-size: 0.9em;
+    font-size: 0.85em;
+    border-top: 1px solid var(--border);
 }
 
 .footer a {
-    color: #81c784;
+    color: var(--primary);
+    font-weight: 500;
 }
 
 /* --------------------------------------------------------------------------
-   Login / Registo - Formularios centrados
+   Login / Registo
    -------------------------------------------------------------------------- */
 .form-login {
     max-width: 420px;
-    margin: 40px auto;
+    margin: 48px auto;
 }
 
 /* --------------------------------------------------------------------------
-   Utilidades - Classes auxiliares reutilizaveis
+   Utilidades
    -------------------------------------------------------------------------- */
 .text-center { text-align: center; }
 .text-right { text-align: right; }
-.text-muted { color: #888; }
-.text-success { color: #2e7d32; }
-.text-danger { color: #c62828; }
-.text-warning { color: #e65100; }
+.text-muted { color: var(--text-muted); }
+.text-success { color: var(--primary); }
+.text-danger { color: var(--accent-red); }
+.text-warning { color: var(--accent-orange); }
 .mt-10 { margin-top: 10px; }
 .mt-20 { margin-top: 20px; }
 .mb-10 { margin-bottom: 10px; }
@@ -648,7 +757,7 @@ table .acoes {
 .p-20 { padding: 20px; }
 
 /* --------------------------------------------------------------------------
-   Responsividade - Adaptar layout para ecras mais pequenos
+   Responsividade
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     .grid-2, .grid-3, .grid-4 {
@@ -669,6 +778,10 @@ table .acoes {
         font-size: 1.8em;
     }
 
+    .hero {
+        padding: 36px 20px;
+    }
+
     .form-inline {
         flex-direction: column;
     }
@@ -678,6 +791,10 @@ table .acoes {
     }
 
     table th, table td {
-        padding: 8px 10px;
+        padding: 10px 12px;
+    }
+
+    .container {
+        padding: 20px 16px;
     }
 }
