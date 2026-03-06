@@ -80,8 +80,8 @@
                 <a href="logout.jsp" class="btn-logout">Sair</a>
             <% } else { %>
                 <%-- Links para login e registo --%>
-                <a href="login.jsp" style="color: white;">Entrar</a>
-                <a href="registo.jsp" class="btn btn-sm" style="background-color: #43a047; color: white;">Registar</a>
+                <a href="login.jsp" class="btn btn-sm btn-secondary">Entrar</a>
+                <a href="registo.jsp" class="btn btn-sm btn-primary">Registar</a>
             <% } %>
         </div>
 
